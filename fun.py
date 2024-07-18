@@ -24,18 +24,6 @@ def setup_fun(bot):
     @bot.command(name='joke', description="Tell a random joke.")
     async def joke(ctx):
         jokes = [
-            "Why don't scientists trust atoms? Because they make up everything!",
-            "Why did the scarecrow win an award? Because he was outstanding in his field!",
-            "Why don't skeletons fight each other? They don't have the guts!"
-        ]
-        await ctx.send(random.choice(jokes))
-
-    @bot.command(name='8ball', description="Ask the magic 8-ball a question.")
-    async def eight_ball(ctx, *, question=None):
-        if question is None:
-            await ctx.send("Please ask a question for the 8-ball.")
-            return
-        jokes = [
             "Why did the bicycle fall over? It was two-tired!",
             "What do you call fake spaghetti? An impasta!",
             "What do you call cheese that isn't yours? Nacho cheese!",
@@ -85,7 +73,26 @@ def setup_fun(bot):
             "What do you call a cat that likes to bowl? An alley cat!",
             "Why did the chicken join the band? Because it had the drumsticks!"
         ]
-
+        await ctx.send(random.choice(jokes))
+    @bot.command(name='8ball', description="Ask the magic 8-ball a question.")
+    async def eight_ball(ctx, *, question=None):
+        if question is None:
+            await ctx.send("Please ask a question for the 8-ball.")
+            return
+        responses = [
+            "It is certain.",
+            "It is decidedly so.",
+            "Without a doubt.",
+            "Yes - definitely.",
+            "You may rely on it.",
+            "As I see it, yes.",
+            "Most likely.",
+            "Outlook good.",
+            "Yes.",
+            "Signs point to yes.",
+            "Mostly not"
+            "Reply hazy, try again."
+        ]
         await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
     @randnum.error
