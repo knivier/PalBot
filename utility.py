@@ -22,6 +22,18 @@ def setup_moderation(bot):
         await member.kick(reason=reason)
         await ctx.send(f'User {member.mention} has been kicked for: {reason}')
 
+    @bot.command(name='mute', description="Mutes user from the server permanently")
+    @commands.has_permissions(administrator=True)
+    async def mute(ctx, member: discord.Member=None, *, reason=None):
+        if member is None or not isinstance(member, discord.Member):
+            await ctx.send("Invalid user. Please mention a valid user to mute.", delete_after=10)
+        try:
+            await member.send(f'You have been muted from {ctx.guild.name} for: {reason}')
+        except discord.HTTPException:
+            pass  # Failed to send a DM, continue anyway
+            await member.mute(reason=reason)
+            await ctx.send("User muted execution complete")
+    
     @bot.command(name='ban', description="Ban a user from the server.")
     @commands.has_permissions(administrator=True)
     async def ban(ctx, member: discord.Member=None, *, reason=None):

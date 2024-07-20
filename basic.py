@@ -13,6 +13,7 @@ def setup_help(bot):
             embed.add_field(name="Utilities", value=(
                 ">ban | Parameters: User, Reason: Bans user from server\n"
                 ">kick | Parameters: User, Reason: Kicks user from server\n"
+                ">mute | Parameters: User, Reason: Mutes user in server\n"
                 ">send | Parameters: User, Message: Sends a direct message to a user\n"
                 ">send_embed | Parameters: @User, Title, | Message:  Sends an embedded message to a user\n"
                 ">say | Parameters: Message | Makes the bot repeat a message in the current channel\n"

@@ -13,6 +13,9 @@ def setup_fun(bot):
         if x >= y:
             await ctx.send("Please ensure x < y for generating a range.")
             return
+        if x < 0 or y < 0:
+            await ctx.send("Please ensure positive numbers for generating a range.")
+            return
         number = random.randint(x, y)
         await ctx.send(f'Random number between {x} and {y}: {number}')
 
@@ -90,7 +93,7 @@ def setup_fun(bot):
             "Outlook good.",
             "Yes.",
             "Signs point to yes.",
-            "Mostly not"
+            "Mostly not",
             "Reply hazy, try again."
         ]
         await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
